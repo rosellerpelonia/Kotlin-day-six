@@ -16,8 +16,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -49,7 +51,7 @@ fun CaptainGame(){
     val treasureFound = remember { mutableStateOf(0) }
     val direction = remember { mutableStateOf("North") }
     val hp = remember{ mutableStateOf(1000) }
-    val sailingStatus = remember{ mutableStateOf("Sailing peacefully") }
+    var sailingStatus by remember{ mutableStateOf("Sailing peacefully") }
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -58,7 +60,7 @@ fun CaptainGame(){
     ){
         Text(text = "Treasures Found: ${treasureFound.value}")
         Text(text = "Treasures Found: ${direction.value}")
-        Text(text = "${sailingStatus.value} in ${direction.value} your ship remaining HP is : ${hp.value}")
+        Text(text = "$sailingStatus in ${direction.value} your ship remaining HP is : ${hp.value}")
         if (hp.value == 0) {
                 Toast.makeText(context, "Game Over! Your HP is zero.", Toast.LENGTH_LONG).show()
             }
@@ -69,10 +71,10 @@ fun CaptainGame(){
                 direction.value = "East"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value = "Sailing peacefully"
+                    sailingStatus = "Sailing peacefully"
                 } else {
                     hp.value -= 100
-                    sailingStatus.value = "A storm encountered"
+                    sailingStatus = "A storm encountered"
                 }
             },
                 enabled = buttonsEnabled
@@ -84,10 +86,10 @@ fun CaptainGame(){
                 direction.value = "West"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value  = "Sailing peacefully"
+                    sailingStatus = "Sailing peacefully"
                 } else {
                     hp.value -= 100
-                    sailingStatus.value = "A storm encountered"
+                    sailingStatus = "A storm encountered"
                 }
             },
                 enabled = buttonsEnabled
@@ -99,10 +101,10 @@ fun CaptainGame(){
                 direction.value = "North"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value  = "Sailing peacefully"
+                    sailingStatus = "Sailing peacefully"
                 } else {
                     hp.value -= 100
-                    sailingStatus.value = "A storm encountered"
+                    sailingStatus = "A storm encountered"
                 }
             },
                 enabled = buttonsEnabled
@@ -114,10 +116,10 @@ fun CaptainGame(){
                 direction.value = "South"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value  = "Sailing peacefully"
+                    sailingStatus = "Sailing peacefully"
                 } else {
                     hp.value -= 100
-                    sailingStatus.value = "A storm encountered"
+                    sailingStatus = "A storm encountered"
                 }
             },
                 enabled = buttonsEnabled
