@@ -60,10 +60,8 @@ fun CaptainGame(){
         Text(text = "Treasures Found: ${direction.value}")
         Text(text = "${sailingStatus.value} in ${direction.value} your ship remaining HP is : ${hp.value}")
         if (hp.value == 0) {
-            LaunchedEffect(key1 = hp.value) {
                 Toast.makeText(context, "Game Over! Your HP is zero.", Toast.LENGTH_LONG).show()
             }
-        }
 
         val buttonsEnabled = hp.value > 0
 
@@ -71,7 +69,7 @@ fun CaptainGame(){
                 direction.value = "East"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value
+                    sailingStatus.value = "Sailing peacefully"
                 } else {
                     hp.value -= 100
                     sailingStatus.value = "A storm encountered"
@@ -86,7 +84,7 @@ fun CaptainGame(){
                 direction.value = "West"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value
+                    sailingStatus.value  = "Sailing peacefully"
                 } else {
                     hp.value -= 100
                     sailingStatus.value = "A storm encountered"
@@ -101,7 +99,7 @@ fun CaptainGame(){
                 direction.value = "North"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value
+                    sailingStatus.value  = "Sailing peacefully"
                 } else {
                     hp.value -= 100
                     sailingStatus.value = "A storm encountered"
@@ -116,7 +114,7 @@ fun CaptainGame(){
                 direction.value = "South"
                 if (Random.nextBoolean()) {
                     treasureFound.value += 1
-                    sailingStatus.value
+                    sailingStatus.value  = "Sailing peacefully"
                 } else {
                     hp.value -= 100
                     sailingStatus.value = "A storm encountered"
